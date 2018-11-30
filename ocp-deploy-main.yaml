@@ -17,7 +17,7 @@
   vars:
     guid: "{{ hostvars['localhost']['guid'].stdout }}"
   roles:
-    - systems
+    - nodes-common
     - docker
 
 # - hosts: nfs
