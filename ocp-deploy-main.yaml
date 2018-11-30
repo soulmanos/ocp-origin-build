@@ -11,14 +11,14 @@
   - name: refresh-inventory
     meta: refresh_inventory
 
-- hosts: nodes
-  tags: node-common-packages
-  become: true
-  vars:
-    guid: "{{ hostvars['localhost']['guid'].stdout }}"
-  roles:
-    - nodes-common
-    - docker
+# - hosts: nodes
+#   tags: node-common-packages
+#   become: true
+#   vars:
+#     guid: "{{ hostvars['localhost']['guid'].stdout }}"
+#   roles:
+#     - nodes-common
+#     - docker
 
 # - hosts: nfs
 #   become: true
