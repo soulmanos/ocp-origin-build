@@ -4,3 +4,33 @@
   vars:
   roles:
     - bastion
+
+- hosts: localhost
+  tags: refresh-inventory
+  tasks:
+  - name: refresh-inventory
+    meta: refresh_inventory
+
+- hosts: nodes
+  tags: node-common-packages
+  become: true
+  vars:
+    guid: "{{ hostvars['localhost']['guid'].stdout }}"
+  roles:
+    - systems
+    - docker
+
+# - hosts: nfs
+#   become: true
+#   roles:
+#     - { role: nfs,
+#         tags: ['export_nfs'] }
+
+#- name: Execute the openshift-ansible prerequisites
+#  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
+
+#- name: Execute the openshift-ansible Deployer
+#  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
+
+# ansible-playbook ocp-deploy-main.yaml -i inventory
+# ansible-playbook ocp-deploy-main.yaml -i inventories --tags "bastion"

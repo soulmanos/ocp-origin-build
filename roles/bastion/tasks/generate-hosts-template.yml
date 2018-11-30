@@ -1,0 +1,7 @@
+---
+  - name: generate-hosts-j2-template
+    vars:
+      retrieved_guid: "{{ hostvars['localhost']['guid'].stdout }}"
+    template:
+      src: files/hosts.j2
+      dest: inventories/production/hosts
