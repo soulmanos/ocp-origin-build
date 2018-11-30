@@ -1,0 +1,3 @@
+---
+# tasks file for nodes-common
+- import_tasks: install-ocp-dependency-packages.yml

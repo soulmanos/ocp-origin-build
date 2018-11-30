@@ -1,0 +1,9 @@
+---
+  - name: install-node-common-packages
+    yum:
+      name: "{{ item }}"
+      state: present
+      update_cache: yes
+    with_items:
+      - wget 
+      - git 

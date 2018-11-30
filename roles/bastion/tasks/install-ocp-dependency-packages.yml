@@ -1,0 +1,23 @@
+---
+  - name: install-packages-and-config-auth
+    yum:
+      name: "{{ item }}"
+      state: present
+      update_cache: yes
+    with_items:
+      - wget 
+      - git 
+      - net-tools 
+      - bind-utils 
+      - iptables-services
+      - bridge-utils 
+      - bash-completion 
+      - kexec-tools 
+      - sos 
+      - psacct
+      - screen
+      - atomic-openshift-utils
+      - httpd-tools
+      - yum-utils
+      - epel-release
+      - sshpass
