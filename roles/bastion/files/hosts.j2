@@ -17,7 +17,7 @@ openshift_disable_check="memory_availability"
 
 # Default node selectors
 osm_default_node_selector='client=common'
-openshift_hosted_infra_selector="env=infra"
+openshift_hosted_infra_selector="env=master"
 
 ###########################################################################
 ### OpenShift Master Vars
@@ -101,9 +101,9 @@ openshift_metrics_storage_volume_name=metrics
 openshift_metrics_storage_volume_size=10Gi
 openshift_metrics_storage_labels={'storage': 'metrics'}
 
-openshift_metrics_cassandra_nodeselector={"env":"infra"}
-openshift_metrics_hawkular_nodeselector={"env":"infra"}
-openshift_metrics_heapster_nodeselector={"env":"infra"}
+openshift_metrics_cassandra_nodeselector={"env":"master"}
+openshift_metrics_hawkular_nodeselector={"env":"master"}
+openshift_metrics_heapster_nodeselector={"env":"master"}
 
 # Enable cluster logging
 openshift_logging_install_logging=True
@@ -118,9 +118,9 @@ openshift_logging_storage_labels={'storage': 'logging'}
 
 # openshift_logging_kibana_hostname=kibana.apps.{{ retrieved_guid }}
 openshift_logging_es_cluster_size=1
-openshift_logging_es_nodeselector={"env":"infra"}
-openshift_logging_kibana_nodeselector={"env":"infra"}
-openshift_logging_curator_nodeselector={"env":"infra"}
+openshift_logging_es_nodeselector={"env":"master"}
+openshift_logging_kibana_nodeselector={"env":"master"}
+openshift_logging_curator_nodeselector={"env":"master"}
 
 ###########################################################################
 ### OpenShift Prometheus Vars
@@ -128,7 +128,7 @@ openshift_logging_curator_nodeselector={"env":"infra"}
 
 ## Add Prometheus Metrics:
 openshift_hosted_prometheus_deploy=true
-openshift_prometheus_node_selector={"env":"infra"}
+openshift_prometheus_node_selector={"env":"master"}
 openshift_prometheus_namespace=openshift-metrics
 
 # Prometheus
@@ -196,8 +196,8 @@ ocp-master-03.{{ retrieved_guid }} openshift_hostname=ocp-master-03.{{ retrieved
 #infranode2.{{ retrieved_guid }} openshift_hostname=infranode2.{{ retrieved_guid }} openshift_node_labels="{'env':'infra', 'cluster': '{{ retrieved_guid }}'}"
 
 ## These are regular nodes
-ocp-node-01.{{ retrieved_guid }} openshift_hostname=ocp-node-01.{{ retrieved_guid }} openshift_node_labels="{'env':'infra', 'cluster': '{{ retrieved_guid }}'}"
-ocp-node-02.{{ retrieved_guid }} openshift_hostname=ocp-node-02.{{ retrieved_guid }} openshift_node_labels="{'env':'infra', 'cluster': '{{ retrieved_guid }}'}"
+ocp-node-01.{{ retrieved_guid }} openshift_hostname=ocp-node-01.{{ retrieved_guid }} openshift_node_labels="{'env':'client', 'cluster': '{{ retrieved_guid }}'}"
+ocp-node-02.{{ retrieved_guid }} openshift_hostname=ocp-node-02.{{ retrieved_guid }} openshift_node_labels="{'env':'client', 'cluster': '{{ retrieved_guid }}'}"
 #node3.{{ retrieved_guid }} openshift_hostname=node3.{{ retrieved_guid }}  openshift_node_labels="{'client':'common', 'cluster': '{{ retrieved_guid }}'}"
 
 [nfs]

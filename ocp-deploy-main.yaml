@@ -11,14 +11,14 @@
   - name: refresh-inventory
     meta: refresh_inventory
 
-# - hosts: nodes
-#   tags: node-common-packages
-#   become: true
-#   vars:
-#     guid: "{{ hostvars['localhost']['guid'].stdout }}"
-#   roles:
-#     - nodes-common
-#     - docker
+- hosts: nodes
+  tags: node-common-packages
+  become: true
+  vars:
+    guid: "{{ hostvars['localhost']['guid'].stdout }}"
+  roles:
+    - nodes-common
+    - docker
 
 # - hosts: nfs
 #   become: true
@@ -27,6 +27,14 @@
 #         tags: ['export_nfs'] }
 
 # git clone https://github.com/openshift/openshift-ansible
+
+# for host in ocp-master-01.soulnet.local \
+# ocp-master-02.soulnet.local \
+# ocp-master-03.soulnet.local \
+# ocp-node-01.soulnet.local \
+# ocp-node-02.soulnet.local \
+# ocp-lb-01.soulnet.local; do ssh-copy-id -i ~/.ssh/id_rsa.pub $host; done
+
 #- name: Execute the openshift-ansible prerequisites
 #  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 
