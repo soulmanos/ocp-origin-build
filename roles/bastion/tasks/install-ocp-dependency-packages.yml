@@ -13,11 +13,11 @@
         - sos 
         - psacct
         - screen
-        - atomic-openshift-utils
         - httpd-tools
         - yum-utils
         - epel-release
         - sshpass
+        - pyOpenSSL
       state: present
       update_cache: yes
     ignore_errors: yes

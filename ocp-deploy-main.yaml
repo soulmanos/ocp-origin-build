@@ -26,6 +26,7 @@
 #     - { role: nfs,
 #         tags: ['export_nfs'] }
 
+# git clone https://github.com/openshift/openshift-ansible
 #- name: Execute the openshift-ansible prerequisites
 #  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 
